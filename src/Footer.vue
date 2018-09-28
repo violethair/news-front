@@ -6,8 +6,8 @@
                 <div class="row">
                     <div class="col-lg-5 col-md-5 col-sm-12">
                         <div class="logoft">
-                            <a href="https://iholding.io/" title="">
-                                <img src="https://iholding.io/images/logoft.png" title="" alt="" />
+                            <a href="/" title="">
+                                <img src="/static/images/logoft.png" title="" alt="" />
                             </a>
                             <div></div>
                             <div class="email-contact">

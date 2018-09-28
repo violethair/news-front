@@ -40,11 +40,34 @@
 	        <div class="main-width">
 	            <div class="row no-gutters">
 	                <div class="col-lg-2 col-md-2 col-sm-12">
-	                    <a href="https://iholding.io/" title="Logo">
-	                        <img src="https://iholding.io/images/logo.png" height="45" title="Logo" alt="Logo">
+	                    <a href="/" title="Logo">
+	                        <img src="/static/images/logo.png" height="45" title="Logo" alt="Logo">
 	                    </a>
 	                </div>
-	                <div class="col-lg-10 col-md-10 col-sm-12"></div>
+	                <div class="col-lg-10 col-md-10 col-sm-12">
+	                	<menu>
+							<div class="wrap-menu">
+								<div class="">
+									<div class="c-menu-mobile">
+										<a class="animateddrawer" id="ddsmoothmenu-mobiletoggle" href="https://iholding.io/#" style="display: none;">
+											<span></span>
+										</a>
+									</div>
+									<div id="smoothmenu1" class="ddsmoothmenu" style="display: block;">
+										<ul>
+											<li v-for="data in categories"><a :href="'/category/' + data.link">{{ data.name }}</a>
+												<ul v-if="data.child && data.child.length > 0">
+													<li v-for="data1 in data.child"><a :href="'/category/' + data1.link">{{ data1.name }}</a></li>
+												</ul>
+											</li>
+										</ul>
+										<div class="clear-main"></div>
+									</div>
+									<div class="clear-main"></div>
+								</div>
+							</div>
+						</menu>
+	                </div>
 	            </div>
 	        </div>
 	    </div>
@@ -55,8 +78,28 @@
 export default {
     data () {
         return {
-        	
+        	categories: null
         }
     },
+    beforeMount : async function () {
+    	var _this = this;
+    	try {
+    		let res = await axios.get('/getCategory');
+    		_this.categories = res.data.data;
+    		$("#document").ready(function () {
+	    		ddsmoothmenu.init({
+				    mainmenuid: "smoothmenu1",
+				    orientation: 'h',
+				    classname: 'ddsmoothmenu',
+				    contentsource: "markup"
+				});
+	    	})
+    	} catch (e) {
+    		console.log("Get Category error: " + e.message);
+    	}
+    },
+    mounted : function () {
+
+    }
 }
 </script>

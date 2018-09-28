@@ -40,12 +40,12 @@
                 <!--    Ads right 2-->
             <div class="text-center" style="padding: 0 0 15px 0;">
                 <a href="https://bit.ly/2OCvHx7" target="_blank">
-                    <img src="https://iholding.io/ads/v1/Slidebar-right1.gif">
+                    <img src="/static/images/ads/v1/Slidebar-right1.gif">
                 </a>
             </div>    <!--    Ads right 2-->
             <div class="text-center" style="padding: 0 0 15px 0;">
                 <a href="https://bit.ly/2O4PqoH" target="_blank">
-                    <img src="https://iholding.io/ads/v1/Slidebar-right2.gif">
+                    <img src="/static/images/ads/v1/Slidebar-right2.gif">
                 </a>
             </div>
         </aside>
