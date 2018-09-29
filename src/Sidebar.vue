@@ -7,8 +7,24 @@
                         Select Currency
                     </label>
                 </div>
-                <div class="b-content-char">
-                        </div>
+                <div class="b-content-char" v-if="coinData">
+                    <ul v-for="data in coinData">
+                        <li>
+                            <div class="padd">{{ data.name }}</div>
+                        </li>
+                        <li>
+                            <div class="padd">
+                                $ {{data.quotes.USD.price.toFixed(2)}}                   
+                            </div>
+                        </li>
+                        <li>
+                            <div class="padd">
+                                <span v-if="data.quotes.USD.percent_change_24h < 0" class="down"><i class="fa fa-caret-down" aria-hidden="true"></i> {{data.quotes.USD.percent_change_24h}}%</span>
+                                <span v-else class="up"><i class="fa fa-caret-up" aria-hidden="true"></i> {{data.quotes.USD.percent_change_24h}}%</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
                 <div class="b-title-bar-right">
                     <label>
@@ -56,8 +72,12 @@
 export default {
     data () {
         return {
-            
+            coinData: null
         }
     },
+    beforeCreate : async function () {
+        var res = await axios.get('https://api.coinmarketcap.com/v2/ticker/?limit=5');
+        this.coinData = res.data.data;
+    }
 }
 </script>

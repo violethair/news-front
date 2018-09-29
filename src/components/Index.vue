@@ -187,10 +187,12 @@ export default {
     methods: {
     	loadMore: async function (event) {
     		var _this = this;
+    		$(event.target).waitMe();
     		try {
 	    		let res = await axios.get('/getMorePost/' + (_this.page + 1));
 	    		_this.all = _this.all.concat(res.data.data);
 	    		$(event.target).waitMe('hide');
+	    		_this.page++;
 	    	} catch (e) {
 	    		console.log(e);
 	    	}

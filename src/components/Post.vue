@@ -123,6 +123,7 @@ export default {
     	try {
     		let res = await axios.get('/getPostInfo/' + _this.query);
     		_this.info = res.data.data;
+    		$("html title").html(_this.info.name + ' - iHolding.io');
     	} catch (e) {
     		console.log(e.message);
     		_this.$router.push('/');
